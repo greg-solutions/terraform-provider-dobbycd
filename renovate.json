@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "gomodTidy": true,
+  "ignoreDeps": [
+
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "semanticCommits": false
+}
