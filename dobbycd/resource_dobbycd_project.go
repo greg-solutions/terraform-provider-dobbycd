@@ -5,6 +5,10 @@ import (
 	"gitlab.com/gregsolutions/dobby-cd/api"
 )
 
+const (
+	nameKey = "name"
+)
+
 func resourceProjectJob() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceProjectCreate,
@@ -13,7 +17,7 @@ func resourceProjectJob() *schema.Resource {
 		Delete: resourceProjectDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": {
+			nameKey: {
 				Type:     schema.TypeString,
 				Required: true,
 			},
@@ -23,7 +27,7 @@ func resourceProjectJob() *schema.Resource {
 
 func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 	client := m.(*api.DobbyCDApi)
-	name := d.Get("name").(string)
+	name := d.Get(nameKey).(string)
 
 	p, err := client.CreateProject(name)
 	if err != nil {
@@ -31,7 +35,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 	}
 
 	d.SetId(p.ID)
-	_ = d.Set("name", p.Name)
+	_ = d.Set(nameKey, p.Name)
 
 	_ = resourceProjectRead(d, m)
 	return nil
@@ -40,12 +44,12 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
 	client := m.(*api.DobbyCDApi)
 	projectId := d.Id()
-	
+
 	p, err := client.GetProject(projectId)
 	if err != nil {
 		return err
 	}
-	_ = d.Set("name", p.Name)
+	_ = d.Set(nameKey, p.Name)
 	return nil
 }
 
@@ -53,12 +57,12 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 	client := m.(*api.DobbyCDApi)
 	projectId := d.Id()
 
-	name := d.Get("name").(string)
-	p, err := client.UpdateProject(projectId,name)
+	name := d.Get(nameKey).(string)
+	p, err := client.UpdateProject(projectId, name)
 	if err != nil {
 		return err
 	}
-	_ = d.Set("name", p.Name)
+	_ = d.Set(nameKey, p.Name)
 	return nil
 }
 
@@ -66,7 +70,7 @@ func resourceProjectDelete(d *schema.ResourceData, m interface{}) error {
 	client := m.(*api.DobbyCDApi)
 	projectId := d.Id()
 
-	 err := client.DeleteProject(projectId)
+	err := client.DeleteProject(projectId)
 	if err != nil {
 		return err
 	}

@@ -26,11 +26,12 @@ func Provider() terraform.ResourceProvider {
 				Type:        schema.TypeString,
 				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("DOBBYCD_PASSWORD", ""),
-				Description: "password which should be used to loginto instance",
+				Description: "password which should be used to login to instance",
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"dobbycd_project": resourceProjectJob(),
+			"dobbycd_pipeline": resourcePipeline(),
 		},
 		ConfigureFunc: configureFunc,
 	}

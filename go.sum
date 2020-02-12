@@ -641,6 +641,8 @@ gitlab.com/gregsolutions/dobby-cd v0.0.0-20200210211224-242eba1ce64c h1:c0ExqqnU
 gitlab.com/gregsolutions/dobby-cd v0.0.0-20200210211224-242eba1ce64c/go.mod h1:UITB0ul4qVzvrIjTqI6sY43+JefeYi2fsD5Y9LPoUls=
 gitlab.com/gregsolutions/dobby-cd v0.0.0-20200211085936-161ed7255da2 h1:uN9OFS386M0/keDX8hNqpChp3w3DQDmp+tNy36DokmM=
 gitlab.com/gregsolutions/dobby-cd v0.0.0-20200211085936-161ed7255da2/go.mod h1:UITB0ul4qVzvrIjTqI6sY43+JefeYi2fsD5Y9LPoUls=
+gitlab.com/gregsolutions/dobby-cd v0.0.0-20200212120500-4afc6d18af42 h1:++vV0YFi77vj4SwK3OMB13ivpu2L9mm/Vy/toiEjmIg=
+gitlab.com/gregsolutions/dobby-cd v0.0.0-20200212120500-4afc6d18af42/go.mod h1:UITB0ul4qVzvrIjTqI6sY43+JefeYi2fsD5Y9LPoUls=
 go.etcd.io/bbolt v1.3.2/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=
 go.opencensus.io v0.20.1/go.mod h1:6WKK9ahsWS3RSO+PY9ZHZUfv2irvY6gN279GOPZjmmk=
 go.opencensus.io v0.21.0/go.mod h1:mSImk1erAIZhrmZN+AvHh14ztQfjbGwt4TtuofqLduU=

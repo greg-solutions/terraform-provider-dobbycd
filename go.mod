@@ -15,7 +15,7 @@ require (
 	github.com/hashicorp/terraform-svchost v0.0.0-20191119180714-d2e4933b9136 // indirect
 	github.com/hashicorp/yamux v0.0.0-20190923154419-df201c70410d // indirect
 	github.com/thoas/go-funk v0.5.0
-	gitlab.com/gregsolutions/dobby-cd v0.0.0-20200211085936-161ed7255da2
+	gitlab.com/gregsolutions/dobby-cd v0.0.0-20200212120500-4afc6d18af42
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e // indirect
 	gopkg.in/ini.v1 v1.52.0 // indirect
 )
