@@ -15,7 +15,7 @@ func TestPipeline_basic(t *testing.T) {
 			{
 				Config: pipelineResource(),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttrSet("dobbycd_pipeline.project_pipeline", "path"),
+					resource.TestCheckResourceAttrSet("dobbycd_pipeline.project_pipeline", pathKey),
 				),
 			},
 		},

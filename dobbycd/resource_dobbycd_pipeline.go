@@ -2,17 +2,18 @@ package dobbycd
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"gitlab.com/gregsolutions/dobby-cd/api"
-	"gitlab.com/gregsolutions/dobby-cd/api/model"
+	"github.com/vadimDidenko/terraform-provider-dobbycd/client"
+	"github.com/vadimDidenko/terraform-provider-dobbycd/client/model"
 )
 
 const (
-	repositoryKey="repository"
-	projectIdKey="project_id"
-	branchKey="branch"
-	tokenKey="token"
-	pathKey="path"
+	repositoryKey = "repository"
+	projectIdKey  = "project_id"
+	branchKey     = "branch"
+	tokenKey      = "token"
+	pathKey       = "path"
 )
+
 func resourcePipeline() *schema.Resource {
 	return &schema.Resource{
 		Create: resourcePipelineCreate,
@@ -46,20 +47,20 @@ func resourcePipeline() *schema.Resource {
 }
 
 func resourcePipelineCreate(d *schema.ResourceData, m interface{}) error {
-	client := m.(*api.DobbyCDApi)
+	client := m.(*client.DobbyCDApi)
 	repository := d.Get(repositoryKey).(string)
 	branch := d.Get(branchKey).(string)
 	token := d.Get(tokenKey).(string)
 	path := d.Get(pathKey).(string)
 	projectId := d.Get(projectIdKey).(string)
 
-	data:=&model.PipelineRequest{
-		Path:    path,
+	data := &model.PipelineRequest{
+		Path:       path,
 		Token:      token,
 		Branch:     branch,
 		Repository: repository,
 	}
-	p, err := client.CreatePipeline(projectId,data)
+	p, err := client.CreatePipeline(projectId, data)
 	if err != nil {
 		return err
 	}

@@ -3,7 +3,7 @@ package dobbycd
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
-	"gitlab.com/gregsolutions/dobby-cd/api"
+	"github.com/vadimDidenko/terraform-provider-dobbycd/client"
 )
 
 func Provider() terraform.ResourceProvider {
@@ -30,8 +30,8 @@ func Provider() terraform.ResourceProvider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"dobbycd_project":     resourceProjectJob(),
-			"dobbycd_pipeline":    resourcePipeline(),
+			"dobbycd_project":            resourceProjectJob(),
+			"dobbycd_pipeline":           resourcePipeline(),
 			"dobbycd_global_permissions": resourceGlobalPermissions(),
 		},
 		ConfigureFunc: configureFunc,
@@ -46,7 +46,7 @@ func configureFunc(rd *schema.ResourceData) (interface{}, error) {
 		Password: rd.Get("password").(string),
 	}
 
-	capi := api.NewApi(config.URL, config.Username, config.Password)
+	capi := client.NewApi(config.URL, config.Username, config.Password)
 	return capi, nil
 }
 

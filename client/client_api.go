@@ -113,8 +113,27 @@ func (d *DobbyCDApi) GetGlobalPermissions() (*model.PermissionResponse, error) {
 	}
 
 	mod := model.PermissionResponse{
-		Permits:make([]model.Permit,0),
+		Permits: make([]model.Permit, 0),
 	}
 
 	return &mod, mapstructure.Decode(response.Payload, &mod.Permits)
+}
+
+func (d *DobbyCDApi) SetGlobalPermissions(permissions []*model.Permit) (*model.PermissionUpdateResponse, error) {
+	response := &api.Response{}
+
+	req := model.PermissionRequest{
+		Permits: permissions,
+	}
+
+	data, _ := req.MarshalBinary()
+
+	_, err := d.client.Post("/admin/permission", bytes.NewBuffer(data), response, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	mod := model.PermissionUpdateResponse{}
+
+	return &mod, mapstructure.Decode(response.Payload, &mod)
 }

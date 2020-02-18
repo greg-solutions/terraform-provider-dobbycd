@@ -5,12 +5,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 )
 
-
 var testDobbyProviders map[string]terraform.ResourceProvider
 var testDobbyProviderFactories func(providers *[]*schema.Provider) map[string]terraform.ResourceProviderFactory
 var testDobbyProvider *schema.Provider
 var testDobbyProviderFunc func() *schema.Provider
-
 
 func init() {
 	testDobbyProvider = Provider().(*schema.Provider)
@@ -28,4 +26,3 @@ func init() {
 	}
 	testDobbyProviderFunc = func() *schema.Provider { return testDobbyProvider }
 }
-

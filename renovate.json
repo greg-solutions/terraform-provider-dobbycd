@@ -4,7 +4,6 @@
   ],
   "gomodTidy": true,
   "ignoreDeps": [
-
   ],
   "labels": [
     "dependencies"

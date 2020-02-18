@@ -35,7 +35,7 @@ func TestProject_basic(t *testing.T) {
 			{
 				Config: projectResource("test11"),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttrSet("dobbycd_project.project", "name"),
+					resource.TestCheckResourceAttrSet("dobbycd_project.project", nameKey),
 				),
 			},
 		},

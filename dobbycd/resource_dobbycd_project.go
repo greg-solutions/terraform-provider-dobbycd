@@ -2,7 +2,7 @@ package dobbycd
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"gitlab.com/gregsolutions/dobby-cd/api"
+	"github.com/vadimDidenko/terraform-provider-dobbycd/client"
 )
 
 const (
@@ -26,7 +26,7 @@ func resourceProjectJob() *schema.Resource {
 }
 
 func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
-	client := m.(*api.DobbyCDApi)
+	client := m.(*client.DobbyCDApi)
 	name := d.Get(nameKey).(string)
 
 	p, err := client.CreateProject(name)
@@ -42,7 +42,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
-	client := m.(*api.DobbyCDApi)
+	client := m.(*client.DobbyCDApi)
 	projectId := d.Id()
 
 	p, err := client.GetProject(projectId)
@@ -54,7 +54,7 @@ func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
-	client := m.(*api.DobbyCDApi)
+	client := m.(*client.DobbyCDApi)
 	projectId := d.Id()
 
 	name := d.Get(nameKey).(string)
@@ -67,7 +67,7 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceProjectDelete(d *schema.ResourceData, m interface{}) error {
-	client := m.(*api.DobbyCDApi)
+	client := m.(*client.DobbyCDApi)
 	projectId := d.Id()
 
 	err := client.DeleteProject(projectId)
