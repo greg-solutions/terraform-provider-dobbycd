@@ -30,8 +30,9 @@ func Provider() terraform.ResourceProvider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"dobbycd_project": resourceProjectJob(),
-			"dobbycd_pipeline": resourcePipeline(),
+			"dobbycd_project":     resourceProjectJob(),
+			"dobbycd_pipeline":    resourcePipeline(),
+			"dobbycd_global_permissions": resourceGlobalPermissions(),
 		},
 		ConfigureFunc: configureFunc,
 	}
