@@ -10,7 +10,7 @@ resource "dobbycd_project" "project_example" {
 
 resource "dobbycd_pipeline" "project_pipeline" {
   path = "/server/example/"
-  token = "Jjabke6ybh9DeyxYzGe2"
+  token = ""
   branch = "develop"
   repository = "https://gitlab.com/gregsolutions/dobby-cd.git"
   project_id = dobbycd_project.project_example.id
